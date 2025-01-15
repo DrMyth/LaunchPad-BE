@@ -27,16 +27,15 @@ app.get("/", (req, res) => {
     res.send("Welcome to Launchpad API");
 });
 
-const port = process.env.PORT || 5000;
-async function main(){
-    await mongoose.connect(process.env.MONGODB_URI!)
-    .then(()=>{
-        console.log("Connected to database");
-    })
-      
-    app.listen(port, ()=>{
-        console.log("Server started on port 5000");
-    });
-}
+export default app;
 
-main();
+async function connectDatabase() {
+    try {
+      await mongoose.connect(process.env.MONGODB_URI!);
+      console.log('Connected to database');
+    } catch (err) {
+      console.error('Error connecting to database:', err);
+    }
+  }
+  
+connectDatabase();
