@@ -7,9 +7,9 @@ app.use(express.json());
 const cors = require('cors');
 
 const corsOptions = {
-    origin: 'https://launchpad-fe-blond.vercel.app', // Allow only this domain
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // You can add other HTTP methods as needed
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify headers you want to allow
+    origin: ['https://launchpad-fe-blond.vercel.app'], 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
 };
 
 app.use(cors(corsOptions));
@@ -23,7 +23,11 @@ app.use((err: any,req: any,res: any,next: any)=>{
     })
 })
 
-const port = process.env.PORT || 4000;
+app.get("/", (req, res) => {
+    res.send("Welcome to Launchpad API");
+});
+
+const port = process.env.PORT || 5000;
 async function main(){
     await mongoose.connect(process.env.MONGODB_URI!)
     .then(()=>{

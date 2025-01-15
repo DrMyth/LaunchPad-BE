@@ -249,6 +249,11 @@ appRouter.post("/create-startup", async (req: any,res: any)=>{
     }
 })
 
+appRouter.get("/test", async (req: any,res: any)=>{
+    console.log("Test route");
+    return res.status(200).json({msg: "Test route"});
+});
+
 module.exports = {
     appRouter
 };
