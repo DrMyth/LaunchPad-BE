@@ -6,13 +6,14 @@ require('dotenv').config();
 app.use(express.json());
 const cors = require('cors');
 
-const corsOptions = {
-    origin: ['https://launchpad-fe-blond.vercel.app'], 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    allowedHeaders: ['Content-Type', 'Authorization'], 
-};
+// const corsOptions = {
+//     origin: ['https://launchpad-fe-blond.vercel.app'], 
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+//     allowedHeaders: ['Content-Type', 'Authorization'], 
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors([]));
 
 app.use("/api", appRouter);
 
